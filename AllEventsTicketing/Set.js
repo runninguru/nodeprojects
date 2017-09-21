@@ -58,10 +58,11 @@ function Set() {
         if(listA === null || listB === null){
             return null;
         }
-        resultList = listA.slice();
-        var symd = resultList.filter(function(x){
-            if(listA.indexOf(x) === -1 || (listA.indexOf(x) !== -1 && listB.indexOf(x) !== -1)){
-                resultList.splice(x, 1);
+
+        var tempArr = listA.slice();
+        var symd = tempArr.filter(function(x){
+            if(listB.indexOf(x) === -1){
+                resultList.push(x);
             }
         })
 	   /*-------------------------------Insert your code here -------------------------------------*/
