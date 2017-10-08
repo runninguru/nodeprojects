@@ -20,7 +20,7 @@
       "prefix": "cms",
       "styles": [
         "styles.css",
-        "bootstrap/dist/css/bootstrap.min.css"
+        "bootstrap/dist/css/bootstrap.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
