@@ -1,7 +1,7 @@
 <cms-header (selectedFeatureEvent)="switchView($event)">cms header tag in app.component...</cms-header>
 <div class="container">
-  <cms-documents *ngIf="selectedFeature === 'documents'"></cms-documents>
-  <cms-messages *ngIf="selectedFeature === 'messages'"></cms-messages>
-  <cms-contacts  *ngIf="selectedFeature === 'contacts'"></cms-contacts>
+  <cms-documents *ngIf="selectedFeature == 'documents'">in app.component.html, in cms-documents.</cms-documents>
+  <cms-messages *ngIf="selectedFeature == 'messages'">in app.component.html, in cms-messages.</cms-messages>
+  <cms-contacts  *ngIf="selectedFeature == 'contacts'">in app.component.html, in cms-contacts.</cms-contacts>
 </div>
-<cms-contacts>cms contacts tag in app.component...</cms-contacts>
+<!--<cms-contacts>cms contacts tag in app.component...</cms-contacts>-->

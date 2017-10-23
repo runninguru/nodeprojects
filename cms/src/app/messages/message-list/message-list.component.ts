@@ -17,7 +17,8 @@ export class MessageListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddMesssage(message: Message) {
+  onAddMessage(message: Message) {
+    console.log('in method onAddMessage in message-list.component.ts');
     this.messages.push(message);
   }
 
