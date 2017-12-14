@@ -7,11 +7,16 @@
       <div class="input-group pull-left pad-left-right col-xs-7">
       </div>
     </div>
-    <a class="btn btn-success pull-right">New Contact</a>
+    <a class="btn btn-success pull-right" [routerLink]="['new']">New Contact</a>
     <div class="clearfix"></div>
   </div>
   <div class="panel-body">
-    <cms-contact-item *ngFor='let contactEl of contacts' [contact]="contactEl"
-                      (contactSelected)="onContactSelected(contactEl)"></cms-contact-item>
+    <cms-contact-item *ngFor='let contactEl of contacts'
+                      [contact]="contactEl"
+                      dnd-draggable
+                      [dragEnabled]="true"
+                      [dragData]="contactEl"
+                      [dropZones]="['group']">
+    </cms-contact-item>
   </div>
 </div>

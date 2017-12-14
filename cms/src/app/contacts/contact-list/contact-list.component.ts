@@ -1,28 +1,29 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Contact } from '../contact.model';
+import {ContactsService} from '../contact.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'cms-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent implements OnInit {
-  @Output() contactWasSelected = new EventEmitter<Contact>();
-  public contacts: Contact[] = [
-    new Contact('1', 'Bro. Jackson', 'jacksonk@byui.edu', '208-497-0123'
-      , 'https://web.byui.edu/Directory/Employee/jacksonk.jpg', null )
-    , new Contact('2', 'Bro. Barzee', 'barzeer@byui.edu', '208-497-1234'
-      , 'https://web.byui.edu/Directory/Employee/barzeer.jpg', null)
-  ];
-  constructor() {
-  }
-
+export class ContactListComponent implements OnInit, OnDestroy {
+  contacts: Contact[] = [];
+  private subscription: Subscription;
+  private newContactSubscription;
+  constructor(private contactsService: ContactsService) {}
   ngOnInit() {
+    this.contacts = this.contactsService.getContacts();
+    this.subscription = this.contactsService.contactListChangedEvent
+      .subscribe(
+        (contactsList: Contact[]) => {
+          this.contacts = contactsList;
+        }
+      );
   }
-
-  onContactSelected(contact: Contact) {
-    console.log('in method onContactSelected.');
-    this.contactWasSelected.emit(contact);
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

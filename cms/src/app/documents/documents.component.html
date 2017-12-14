@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col-md-3">
-    <cms-document-list (documentWasSelected)="selectedDocument = $event"></cms-document-list>
+    <cms-document-list></cms-document-list>
   </div>
   <div class="col-md-9">
-    <cms-document-detail *ngIf='selectedDocument; else info' [document]="selectedDocument"></cms-document-detail>
+    <!--<cms-document-detail *ngIf='selectedDocument; else info' [document]="selectedDocument"></cms-document-detail>-->
+    <router-outlet></router-outlet>
     <ng-template #info>
       <p>Please Select a Document</p>
     </ng-template>

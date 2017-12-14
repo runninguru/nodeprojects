@@ -9,8 +9,18 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-12">
-            <cms-message-item *ngFor="let mItem of messages"
-            [message] = mItem></cms-message-item>
+            <div *ngIf="messages != null && messages.length > 0;else blank">
+              <cms-message-item
+                *ngFor="let mItem of messages"
+                [message] = mItem
+              ></cms-message-item>
+            </div>
+            <ng-template #blank>
+              <div class="list-group-item clearfix">
+                <span class="messageHeader">Alert</span>
+                <div class="messageText">No Messages</div>
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>

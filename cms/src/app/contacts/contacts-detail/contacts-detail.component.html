@@ -2,12 +2,19 @@
   <div class="panel-heading">
     <h3 class="modal-title"> {{contact.name}} </h3>
     <img class="img-responsive" [src]="contact.imageUrl">
-    <a class="btn-primary btn">Edit</a>
-    <a class="btn-danger btn">Delete</a>
+    <a class="btn-primary btn" [routerLink]="['edit']">Edit</a>
+    <a class="btn-danger btn" (click)="onDelete()">Delete</a>
     <div class="clearfix"></div>
   </div>
   <div class="panel-body">
     <p>Email:<span>{{contact.email}}</span></p>
     <p>Phone:<span>{{contact.phone}}</span></p>
   </div>
+</div>
+
+<div *ngIf="contact.group != null" class="row" style="padding: 20px">
+  <h4><b>Group Contacts</b></h4>
+  <cms-contact-item *ngFor="let contact of contact.group"
+  [contact]="contact">
+  </cms-contact-item>
 </div>

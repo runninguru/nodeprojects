@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
+import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
@@ -16,6 +15,16 @@ import { MessageEditComponent } from './messages/message-edit/message-edit.compo
 import { MessageListComponent } from './messages/message-list/message-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DropdownDirective } from './dropdown.directive';
+import {ContactsService} from './contacts/contact.service';
+import {FormsModule} from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { DocumentViewComponent } from './documents/document-view/document-view.component';
+import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
+import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {AppRoutingModule} from './app-routing';
+import {WindRefService} from './wind-ref.service';
+import {DndModule} from 'ng2-dnd';
 
 @NgModule({
   declarations: [
@@ -33,12 +42,19 @@ import { DropdownDirective } from './dropdown.directive';
     MessageEditComponent,
     MessageListComponent,
     MessagesComponent,
-    DropdownDirective
+    DropdownDirective,
+    DocumentViewComponent,
+    DocumentEditComponent,
+    ContactEditComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    RouterTestingModule,
+    AppRoutingModule,
+    DndModule.forRoot(),
   ],
-  providers: [],
+  providers: [WindRefService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
